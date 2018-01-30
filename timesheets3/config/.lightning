@@ -1,0 +1,36 @@
+[
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v36.0/tooling/sobjects/AuraDefinition/0Ad1N000000zs0USAQ"
+        },
+        "Id": "0Ad1N000000zs0USAQ",
+        "AuraDefinitionBundleId": "0Ab1N000000BCsDSAW",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v36.0/tooling/sobjects/AuraDefinitionBundle/0Ab1N000000BCsDSAW"
+            },
+            "DeveloperName": "timesheetsViewTables"
+        },
+        "DefType": "COMPONENT",
+        "Format": "XML"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v36.0/tooling/sobjects/AuraDefinition/0Ad1N000000zuInSAI"
+        },
+        "Id": "0Ad1N000000zuInSAI",
+        "AuraDefinitionBundleId": "0Ab1N000000BDdBSAW",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v36.0/tooling/sobjects/AuraDefinitionBundle/0Ab1N000000BDdBSAW"
+            },
+            "DeveloperName": "timesheets"
+        },
+        "DefType": "APPLICATION",
+        "Format": "XML"
+    }
+]
