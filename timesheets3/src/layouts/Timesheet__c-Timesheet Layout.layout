@@ -157,6 +157,14 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <miniLayout>
+        <fields>Employee__c</fields>
+        <fields>Start_Date__c</fields>
+        <fields>End_Date__c</fields>
+        <fields>Total_Hours__c</fields>
+        <fields>Type__c</fields>
+        <fields>Other_description__c</fields>
+    </miniLayout>
     <relatedLists>
         <fields>CreatedDate</fields>
         <fields>StepStatus</fields>

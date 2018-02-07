@@ -45,9 +45,10 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>List_View</compactLayoutAssignment>
     <compactLayouts>
         <fullName>List_View</fullName>
+        <fields>Name</fields>
         <fields>Start_Date__c</fields>
         <fields>End_Date__c</fields>
         <fields>Employee__c</fields>
@@ -116,7 +117,8 @@
         <required>false</required>
         <scale>2</scale>
         <trackTrending>false</trackTrending>
-        <type>Currency</type>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Hour_rate__c</fullName>
@@ -126,7 +128,8 @@
         <required>false</required>
         <scale>2</scale>
         <trackTrending>false</trackTrending>
-        <type>Currency</type>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Monday__c</fullName>
@@ -173,7 +176,8 @@
         <required>false</required>
         <scale>2</scale>
         <trackTrending>false</trackTrending>
-        <type>Currency</type>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Thuesday__c</fullName>

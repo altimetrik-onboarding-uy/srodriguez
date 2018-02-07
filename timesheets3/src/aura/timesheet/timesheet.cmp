@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForRecordHome" >
+	<c:timesheetHeader />
+    <c:timesheetsViewTables />
+</aura:component>
