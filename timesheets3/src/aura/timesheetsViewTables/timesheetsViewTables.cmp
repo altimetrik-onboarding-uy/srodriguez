@@ -1,0 +1,65 @@
+<aura:component implements="flexipage:availableForRecordHome" controller="timesheetsController">
+    <aura:attribute name="timesheets" type="List"/>
+    <aura:attribute name="view" type="String" default="1"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:handler event="force:refreshView" action="{!c.viewRefreshed}" />
+
+	 <lightning:layoutItem padding="vertical-small">
+                <div class="slds-float_right">
+            	<lightning:button variant="brand" label="Set selected as Submitted!" iconName="utility:check" 
+                                  iconPosition="left" onclick="{!c.setAsSubmitted}" />
+                    </div>
+     </lightning:layoutItem>
+        <lightning:layoutItem padding="vertical-small">
+            <div class= "slds-float_left">
+    		<lightning:select name="selectedItem" label="" onchange="{!c.changeView}">
+								<option value="1">All</option>
+                                <option value="2">Only most recents by Employee</option>
+                                <option value="3">Submitted</option>
+                                <option value="4">Not Submitted</option>
+    		</lightning:select>
+                </div>
+         </lightning:layoutItem>
+    
+     <table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+    <thead>
+      <tr class="slds-text-heading--label">
+        <th scope="col"><div class="slds-truncate" title="Detail Page">Detail Page</div></th>
+        <th scope="col"><div class="slds-truncate" title="Employee's name">Employee's name</div></th>
+        <th scope="col"><div class="slds-truncate" title="Employee's date of birth">Employee's date of birth</div></th>
+        <th scope="col"><div class="slds-truncate" title="Start Date">Start Date</div></th>
+        <th scope="col"><div class="slds-truncate" title="End Date">End Date</div></th>
+        <th scope="col"><div class="slds-truncate" title="Total Hours">Total Hours</div></th>
+        <th scope="col"><div class="slds-truncate" title="Gross Pay">Gross Pay</div></th>
+        <th scope="col"><div class="slds-truncate" title="Taxes">Taxes</div></th>
+        <th scope="col"><div class="slds-truncate" title="Type">Type</div></th>
+        <th scope="col"><div class="slds-truncate" title="Submitted?">Submitted?</div></th> 
+      </tr>
+    </thead>
+    <tbody>
+      <aura:iteration items="{!v.timesheets}" var="time">
+        <tr>
+          <!--th scope="row"><div class="slds-truncate" title="{!time.Id}">{!time.Id}</div></th-->
+           <td><a class="slds-truncate slds-button" href="{!'/one/one.app?#/sObject/'+ time.Id + '/view'}" target="_self">{!time.Name}</a></td>
+          <td><div class="slds-truncate slds-button" title="{!time.Employee__r.Name}" id="{!time.Id}" onclick="{!c.edit}">{!time.Employee__r.Name}</div></td>
+          <td><div class="slds-truncate" title="{!time.Employee__r.Birthdate}">
+              <lightning:formattedDateTime year="numeric" month="long" day="2-digit" value="{!time.Employee__r.Birthdate}"/></div></td>
+          <td><div class="slds-truncate" title="{!time.Start_Date__c}">{!time.Start_Date__c}</div></td>
+          <td><div class="slds-truncate" title="{!time.End_Date__c}">{!time.End_Date__c}</div></td>
+          <td><div class="slds-truncate" title="{!time.Total_Hours__c}">{!time.Total_Hours__c}</div></td>
+          <td><div class="slds-truncate" title="{!time.Gross_Pay__c}">
+              <lightning:formattedNumber value="{!time.Gross_Pay__c}" style="currency" currencyCode="USD" /></div></td>
+          <td><div class="slds-truncate" title="{!time.Taxes__c}">
+              <lightning:formattedNumber value="{!time.Taxes__c}" style="currency" currencyCode="USD" /></div></td>
+          <td><div class="slds-truncate" title="{!time.Type__c}">{!time.Type__c}</div></td>
+          <td><div class="slds-truncate" title="{!time.Submmited__c}">
+              <lightning:recordViewForm recordId="{!time.Id}" objectApiName="Timesheet__c">
+              <lightning:outputField fieldName="Submmited__c" variant="label-hidden"/>
+              </lightning:recordViewForm>
+				</div></td>
+        </tr>
+      </aura:iteration>
+    </tbody>
+  </table>
+</aura:component>

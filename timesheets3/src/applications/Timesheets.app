@@ -5,4 +5,5 @@
     <tab>standard-Contact</tab>
     <tab>Timesheet__c</tab>
     <tab>standard-report</tab>
+    <tab>Timesheets_List</tab>
 </CustomApplication>
