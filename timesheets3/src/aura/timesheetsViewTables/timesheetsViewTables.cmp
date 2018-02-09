@@ -58,11 +58,8 @@
           <td><div class="slds-truncate" title="{!time.Taxes__c}">
               <lightning:formattedNumber value="{!time.Taxes__c}" style="currency" currencyCode="USD" /></div></td>
           <td><div class="slds-truncate" title="{!time.Type__c}">{!time.Type__c}</div></td>
-          <td><div class="slds-truncate slds-align_absolute-center" style="height: 2rem;" title="{!time.Submmited__c}">
-              <lightning:recordViewForm recordId="{!time.Id}" objectApiName="Timesheet__c">
-              <lightning:outputField fieldName="Submmited__c" variant="label-hidden"/>
-              </lightning:recordViewForm>
-				</div></td>
+          <td><div class="slds-align_absolute-center" style="height: 2rem;">
+          <lightning:input type="checkbox" disabled="true" checked="{!time.Submmited__c}" /></div></td>
         </tr>
       </aura:iteration>
     </tbody>
