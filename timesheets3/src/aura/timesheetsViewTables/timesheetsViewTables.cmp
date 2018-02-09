@@ -8,7 +8,7 @@
     <aura:handler event="force:refreshView" action="{!c.viewRefreshed}" />
 
 	 <lightning:layoutItem padding="vertical-small">
-                <div class="slds-float_right">
+                <div class="slds-float_right" style= "padding-top:18px;">
             	<lightning:button variant="brand" label="{!v.checkedSize +  ' Timesheets will be set as Submitted!'}" iconName="utility:check" 
                                   iconPosition="left" onclick="{!c.setAsSubmitted}" />
                     </div>
