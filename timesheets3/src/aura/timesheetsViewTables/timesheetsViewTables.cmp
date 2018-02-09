@@ -1,13 +1,15 @@
 <aura:component implements="flexipage:availableForRecordHome" controller="timesheetsController">
     <aura:attribute name="timesheets" type="List"/>
     <aura:attribute name="view" type="String" default="1"/>
+    <aura:attribute name="checked" type="List"/>
+    <aura:attribute name="checkedSize" type="Integer" default="0"/>
     
     <aura:handler name="init" value="{!this}" action="{!c.init}"/>
     <aura:handler event="force:refreshView" action="{!c.viewRefreshed}" />
 
 	 <lightning:layoutItem padding="vertical-small">
                 <div class="slds-float_right">
-            	<lightning:button variant="brand" label="Set selected as Submitted!" iconName="utility:check" 
+            	<lightning:button variant="brand" label="{!v.checkedSize +  ' Timesheets will be set as Submitted!'}" iconName="utility:check" 
                                   iconPosition="left" onclick="{!c.setAsSubmitted}" />
                     </div>
      </lightning:layoutItem>
@@ -25,6 +27,7 @@
      <table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
     <thead>
       <tr class="slds-text-heading--label">
+        <th scope="col"><div class="slds-truncate" title="Submit"></div></th>
         <th scope="col"><div class="slds-truncate" title="Detail Page">Detail Page</div></th>
         <th scope="col"><div class="slds-truncate" title="Employee's name">Employee's name</div></th>
         <th scope="col"><div class="slds-truncate" title="Employee's date of birth">Employee's date of birth</div></th>
@@ -41,6 +44,8 @@
       <aura:iteration items="{!v.timesheets}" var="time">
         <tr>
           <!--th scope="row"><div class="slds-truncate" title="{!time.Id}">{!time.Id}</div></th-->
+            <td><div class="slds-align_absolute-center" style="height: 2rem;">
+                <lightning:input type="checkbox" disabled="{!time.Submmited__c}" name="checkSubm" value="{!time}" onchange="{!c.addOrRemove}"/></div></td>
            <td><a class="slds-truncate slds-button" href="{!'/one/one.app?#/sObject/'+ time.Id + '/view'}" target="_self">{!time.Name}</a></td>
           <td><div class="slds-truncate slds-button" title="{!time.Employee__r.Name}" id="{!time.Id}" onclick="{!c.edit}">{!time.Employee__r.Name}</div></td>
           <td><div class="slds-truncate" title="{!time.Employee__r.Birthdate}">
@@ -53,7 +58,7 @@
           <td><div class="slds-truncate" title="{!time.Taxes__c}">
               <lightning:formattedNumber value="{!time.Taxes__c}" style="currency" currencyCode="USD" /></div></td>
           <td><div class="slds-truncate" title="{!time.Type__c}">{!time.Type__c}</div></td>
-          <td><div class="slds-truncate" title="{!time.Submmited__c}">
+          <td><div class="slds-truncate slds-align_absolute-center" style="height: 2rem;" title="{!time.Submmited__c}">
               <lightning:recordViewForm recordId="{!time.Id}" objectApiName="Timesheet__c">
               <lightning:outputField fieldName="Submmited__c" variant="label-hidden"/>
               </lightning:recordViewForm>

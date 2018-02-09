@@ -5,7 +5,7 @@
             var state = response.getState();
             if (state === "SUCCESS") {
                 cmp.set("v.timesheets", response.getReturnValue());
-                console.log(response.getReturnValue());
+                console.log(cmp.get("v.timesheets"));
             }
             else {
                 console.log("Failed with state: " + state);
@@ -30,6 +30,21 @@
     viewRefreshed: function(component, event, helper) {
         console.log('estoy llamando al helper');
     	helper.reload(component, event, helper);
+	},
+    
+    addOrRemove: function(component, event, helper) {
+   
+        var timeS = event.getSource("checkSubm").get("v.value");
+        
+        if(event.getSource("checkSubm").get("v.checked") == true)
+            helper.addTimesheet(component,event,timeS);
+        else
+            helper.removeTimesheet(component,event,timeS);
+        
+	},
+    
+    setAsSubmitted: function (component, event, helper) {
+        helper.updateTimesheets(component, event);
 	},
     
 })
